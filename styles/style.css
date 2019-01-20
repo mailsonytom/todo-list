@@ -1,0 +1,9 @@
+.sign-in-parent{
+    padding-top: 8em;
+}
+.sign-in-box{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border: 1px solid rgb(195, 195, 208);
+    border-radius: 5px;
+}
