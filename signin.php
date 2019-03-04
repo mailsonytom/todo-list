@@ -7,7 +7,7 @@ if(isset($_POST)){
     $sql = "SELECT * FROM user_credentials WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
     if($row=mysqli_fetch_assoc($result)){
-        if(password_verify($password, $row['pass_word'])){
+        if(password_verify($password, $row['password'])){
             echo '<script type="text/javascript">
                     window.location = "todo.html"
                 </script>';

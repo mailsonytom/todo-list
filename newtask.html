@@ -18,16 +18,16 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign out</button>
         </a>
     </nav>
-    ,<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row mt-4 ">
             <div class="col-md-10 mx-auto">
                 <h6 class="text-primary">Add To-Do </h6>
                 <div class="list-group mt-2">
-                    <form>
+                    <form action="new.php" method="post">
                         <div class="form-group">
-                            <textarea class="form-control" rows="10" id="comment">
+                            <textarea class="form-control" rows="10" id="comment" name="todo">
                                 </textarea>
-                                Set due date: <input type="date" class="form-control" name="due">
+                            <input type="date" class="form-control" name="due">
                         </div>
                     </form>
                 </div>
@@ -35,8 +35,8 @@
         </div>
         <div class="col-md-2 mt-2 mx-auto text-center">
             <a href="todo.html">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to list</button>
-            </a> 
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Add to list">
+            </a>
         </div>
     </div>
 </body>

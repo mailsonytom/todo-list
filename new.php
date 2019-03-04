@@ -1,15 +1,14 @@
 <?php include 'connect.php' ?>
 <?php
-$todo = $date= "";
+$to_do = $date= "";
 if(isset($_POST)){
-    $todo = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $username = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);;
-    $sql = "INSERT INTO user_credentials (firstname, lastname, username, password) VALUES ('$firstname', '$lastname', '$username', '$password')";
+    $to_do = $_POST['todo'];
+    $date = $_POST['due'];
+    $sql = "INSERT INTO new_todo (to_do, date) VALUES ('$to_do', '$date')";
     if ($conn->query($sql) === TRUE) {
-        echo "You've signed up. <a href='index.html'>Click here to Login</a>";
+        echo "<a href='todo.html'></a>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+?>
