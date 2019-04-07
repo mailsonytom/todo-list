@@ -1,3 +1,21 @@
+<?php include 'connect.php' ?>
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+$to_do = $date= "";
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $to_do = $_POST['todo'];
+    $date = strtotime($_POST['due']);
+    $sql = "INSERT INTO new_todo (to_do, due_date, current_status, user_id) VALUES ('$to_do', '$date', '0', '$user_id')";
+    if ($conn->query($sql) === TRUE) {
+        echo '<script type="text/javascript">
+                    window.location = "incomplete.php"
+                </script>';
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +32,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(238, 238, 238)">
         <a class="navbar-brand" href="#">New task</a>
-        <a href="index.html">
+        <a href="signin.php">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign out</button>
         </a>
     </nav>
@@ -23,21 +41,18 @@
             <div class="col-md-10 mx-auto">
                 <h6 class="text-primary">Add To-Do </h6>
                 <div class="list-group mt-2">
-                    <form action="new.php" method="post">
+                    <form action="" method="post">
                         <div class="form-group">
                             <textarea class="form-control" rows="10" id="comment" name="todo">
                                 </textarea>
                             <input type="date" class="form-control" name="due">
-                            <input type="submit" />
+                            <a href="incomplete.php">
+                                <input type="submit" />
+                            </a>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="col-md-2 mt-2 mx-auto text-center">
-            <a href="todo.html">
-                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Add to list">
-            </a>
         </div>
     </div>
 </body>
